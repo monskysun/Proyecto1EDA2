@@ -9,9 +9,9 @@ import java.io.*;
 
 public class ManejoArch {
 	
-	public void createArch() {
+	public void createArch(String nameArch) {
 		 try {
-			  File arch1 = new File("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");//Especifica ruta y nombre del archivo  
+			  File arch1 = new File(nameArch);//Especifica ruta y nombre del archivo  
 			  if (arch1.createNewFile()) {
 			      System.out.println("Archivo creado: " + arch1.getName());
 			  
@@ -39,11 +39,11 @@ public class ManejoArch {
 		    }
 	  }
 	
-	public void EscribirArchPoli(ArrayList<Persona> personas) {
+	public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch) {
 		try { 
 			  int rango = 20;
 			  int i = 0;
-		      FileWriter myWriter = new FileWriter("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");
+		      FileWriter myWriter = new FileWriter(nameArch);
 		      while (i<20) {
 		    
 		      myWriter.write(personas.get(i).getNombre()+",");
@@ -93,8 +93,8 @@ public class ManejoArch {
 		    }
 	  
 	  
-	  
-	  public ArrayList<Persona> LecturaPoli() {
+	  // Tal vez ya no se usa
+	 /* public ArrayList<Persona> LecturaPoli() {
 			Scanner stdIn = new Scanner(System.in);
 			Scanner fileIn;
 			String line;
@@ -124,7 +124,7 @@ public class ManejoArch {
 		        }   
 	        	return personas;
 	
-		    }
+		    }*/
 	
 
 	
