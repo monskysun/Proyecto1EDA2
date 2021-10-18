@@ -41,13 +41,11 @@ public class ManejoArch {
 	
 	public void EscribirArchPoli(ArrayList<Persona> personas) {
 		try { 
+			  int rango = 20;
 			  int i = 0;
 		      FileWriter myWriter = new FileWriter("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");
 		      while (i<20) {
-		    	  
-		    	  //System.out.print(personas.get(i).getNombre()+" ");
-					//System.out.print(personas.get(i).getApellidos()+" ");
-					//System.out.print(personas.get(i).getClaves()+" \n");
+		    
 		      myWriter.write(personas.get(i).getNombre()+",");
 		      myWriter.write(personas.get(i).getApellidos()+",");
 		      myWriter.write(personas.get(i).getClaves()+",,"+"\n");
@@ -96,13 +94,12 @@ public class ManejoArch {
 	  
 	  
 	  
-	  public ArrayList<Persona> LecturaPoli() {
+	  public ArrayList<Persona> LecturaPoli(int i,int vez) {
 			Scanner stdIn = new Scanner(System.in);
 			Scanner fileIn;
 			String line;
 			ArrayList<Persona> personas = new ArrayList<>();
 		    String[] cadena;
-		    int i = 0;
 		  
 			try {
 		          System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");

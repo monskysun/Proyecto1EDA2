@@ -14,20 +14,11 @@ public class mainPy1 {
 		Scanner guarda = new Scanner(System.in);
 	    RadixExterno rdx=new RadixExterno();
 	    ArrayList<Persona> personas = new ArrayList<>();
-		InsertionSort insertion = new InsertionSort();
-		ImprimirPersona imprimePersona = new ImprimirPersona();
 	    
 	    int opcion=0;
 	
 	    System.out.println("\t\tBIENVENIDO\n");
-	
-		ManejoArch leerarch1 = new ManejoArch(); 
-		personas = leerarch1.LecturaPoli();
-		
-		System.out.println("\nSin ordenar: ");
-	    imprimePersona.imprimirNom(personas);
-	    System.out.println("\nOrdenado:");
-       	insertion.insertionSort(personas,personas.size());
+
      
        	Polifase poli = new Polifase();
        	poli.polifase(personas);
