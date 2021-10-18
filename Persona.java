@@ -41,10 +41,6 @@ public class Persona {
     	return claves;
     }
     
-    /*public String getApellidos(int i) {
-    	a = apellidos.charAt(0);
-    	System.out.println(apellidos.charAt(1));
-    	return a;
-    }*/
+
 
 }

@@ -8,26 +8,36 @@ import java.io.FileWriter; // Para escribir en archivos
 import java.io.IOException; //Para arrojar errores
 
 public class mainPy1 {
+	
 		public static void main(String[] args) 
 		{
 		Scanner guarda = new Scanner(System.in);
 	    RadixExterno rdx=new RadixExterno();
+	    ArrayList<Persona> personas = new ArrayList<>();
+		InsertionSort insertion = new InsertionSort();
+		ImprimirPersona imprimePersona = new ImprimirPersona();
+	    
 	    int opcion=0;
 	
 	    System.out.println("\t\tBIENVENIDO\n");
-		
-		//Arch1.createArch();
-		//ManejoArch EscribirArch = new ManejoArch();
-		//EscribirArch.EscribirArch();
+	
 		ManejoArch leerarch1 = new ManejoArch(); 
-		        leerarch1.LecturaArch();
-		        
+		personas = leerarch1.LecturaPoli();
 		
+		System.out.println("\nSin ordenar: ");
+	    imprimePersona.imprimirNom(personas);
+	    System.out.println("\nOrdenado:");
+       	insertion.insertionSort(personas,personas.size());
+     
+       	Polifase poli = new Polifase();
+       	poli.polifase(personas);
+      
+        	
 		while(opcion!=4){
 		    System.out.println("\nSelecciona un algoritmo de ordenamiento externo");
 		    System.out.println("1)Polifase  2) Mezcla 3)Radix Sort  4)Salir");
 		    opcion=guarda.nextInt();
-		        
+		   
 		        
 		    switch(opcion){ 
 			case 1:// Poli
@@ -35,7 +45,7 @@ public class mainPy1 {
 			case 2:// Mezcla	
 		                break;
 			case 3:// Radix	
-		                //rdx.radixExtrn(list);     //Asociar con la lista "claves"
+		            
 		                break;
 			case 4:// salir		
 		                break;
@@ -48,9 +58,6 @@ public class mainPy1 {
 			}
 }
 
-		//createArch() myObj = new createArch(); // Create an object of Main
-	    //myObj.myPublicMethod(); // Call the public method
-	    
 	
 
 
