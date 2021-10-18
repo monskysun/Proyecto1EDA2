@@ -39,12 +39,12 @@ public class ManejoArch {
 		    }
 	  }
 	
-	public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch) {
+	public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch,int n) {
 		try { 
-			  int rango = 20;
+
 			  int i = 0;
 		      FileWriter myWriter = new FileWriter(nameArch);
-		      while (i<20) {
+		      while (i<n) {
 		    
 		      myWriter.write(personas.get(i).getNombre()+",");
 		      myWriter.write(personas.get(i).getApellidos()+",");
