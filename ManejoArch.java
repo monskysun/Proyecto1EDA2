@@ -94,12 +94,13 @@ public class ManejoArch {
 	  
 	  
 	  
-	  public ArrayList<Persona> LecturaPoli(int i,int vez) {
+	  public ArrayList<Persona> LecturaPoli() {
 			Scanner stdIn = new Scanner(System.in);
 			Scanner fileIn;
 			String line;
 			ArrayList<Persona> personas = new ArrayList<>();
 		    String[] cadena;
+		    int i = 0;
 		  
 			try {
 		          System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");

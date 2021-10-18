@@ -2,11 +2,8 @@ package EDA2Proyecto1;
 import java.io.File; //Para trabajar con archivos
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import java.io.FileWriter; // Para escribir en archivos
-
 import java.io.IOException; //Para arrojar errores
-
 public class mainPy1 {
 	
 		public static void main(String[] args) 
@@ -14,12 +11,14 @@ public class mainPy1 {
 		Scanner guarda = new Scanner(System.in);
 	    RadixExterno rdx=new RadixExterno();
 	    ArrayList<Persona> personas = new ArrayList<>();
-	    
+
 	    int opcion=0;
-	
+
 	    System.out.println("\t\tBIENVENIDO\n");
 
-     
+		ManejoArch leerarch1 = new ManejoArch(); 
+
+
        	Polifase poli = new Polifase();
        	poli.polifase(personas);
       
@@ -48,8 +47,3 @@ public class mainPy1 {
 		System.out.println("\n\tHASTA LUEGO:)\n");
 			}
 }
-
-	
-
-
-
