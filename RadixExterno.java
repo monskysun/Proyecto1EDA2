@@ -1,4 +1,4 @@
-package EDA2Proyecto1;
+package Proyecto1;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

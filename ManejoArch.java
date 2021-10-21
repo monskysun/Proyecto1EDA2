@@ -1,5 +1,4 @@
-package EDA2Proyecto1;//p y m= A
-
+package Proyecto1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,11 +91,33 @@ public class ManejoArch {
 	
 		    }
 	  
-	  public void borrarContenido(ArrayList<Persona> personas) {
-		  Persona persona = new Persona("","","");
-		  for (int i = 0; i < personas.size(); i++) 
+	  public void borrarContenido(ArrayList<Persona> personas,String nameArch) {
+		  int n = personas.size();
+		  int i = 0;
+		  
+		  try { 
+
+		      FileWriter myWriter = new FileWriter(nameArch);
+		      Persona persona = new Persona("","","");
+		      while (i<n) {
+		      personas.set(i,  persona);
+		      myWriter.write(personas.get(i).getNombre());
+		      myWriter.write(personas.get(i).getApellidos());
+		      myWriter.write(personas.get(i).getClaves()+"\n");
+		      i = i + 1;
+		      }
+		      myWriter.close();
+		      System.out.println("YA QUEDÓ");
+		      
+		    } 
+			catch (IOException e) 
+			{
+		      System.out.println("Algo salió mal borrando el contenido de tu archivo.");
+		      e.printStackTrace();
+		    }
+		  
+		  
 		
-			personas.set(i,  persona);
 
 	  }
 	  // Tal vez ya no se usa

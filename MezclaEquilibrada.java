@@ -1,7 +1,5 @@
-package EDA2Proyecto1;
-
+package Proyecto1;
 import java.util.ArrayList;
-
 public class MezclaEquilibrada {
 	
 	public void MezclaEquilibrada(ArrayList<Persona> personas) {

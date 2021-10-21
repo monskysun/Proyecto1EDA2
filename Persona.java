@@ -1,4 +1,5 @@
-package EDA2Proyecto1;
+package Proyecto1;
+
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class Persona {
     	this.apellidos = apellidos;
     	this.claves = claves;
     }
-    public Persona(){ // Constructor 
+    public Persona(){
 
     }
       
