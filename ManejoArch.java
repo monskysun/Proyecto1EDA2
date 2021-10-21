@@ -92,7 +92,13 @@ public class ManejoArch {
 	
 		    }
 	  
-	  
+	  public void borrarContenido(ArrayList<Persona> personas) {
+		  Persona persona = new Persona("","","");
+		  for (int i = 0; i < personas.size(); i++) 
+		
+			personas.set(i,  persona);
+
+	  }
 	  // Tal vez ya no se usa
 	 /* public ArrayList<Persona> LecturaPoli() {
 			Scanner stdIn = new Scanner(System.in);

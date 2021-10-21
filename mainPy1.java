@@ -19,8 +19,13 @@ public class mainPy1 {
 		ManejoArch leerarch1 = new ManejoArch(); 
 
 
-       	Polifase poli = new Polifase();
-       	poli.polifase(personas);
+       	//Polifase poli = new Polifase();
+       	//poli.polifase(personas);
+		
+		MezclaEquilibrada  mezcla = new MezclaEquilibrada();
+		mezcla.MezclaEquilibrada(personas);
+		
+		
       
         	
 		while(opcion!=4){
