@@ -1,11 +1,17 @@
 
 package proyectoeda1;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RadixExterno {
     LinkedList cola0 = new LinkedList();
@@ -19,53 +25,37 @@ public class RadixExterno {
     LinkedList cola8 = new LinkedList();
     LinkedList cola9 = new LinkedList();
     ArrayList<Persona> cola11 = new ArrayList<>();
+    File archivo0;
+    File archivo1 = new File("Cola1.txt");
+    File archivo2;
+    File archivo3;
+    File archivo4;
+    File archivo5;
+    File archivo6;
+    File archivo7;
+    File archivo8;
+    File archivo9;
+    File archivo11 = new File("Final.txt");
     
-    
-    
-    public void escibirArch(String nameArch){
-        
+
+    public void escribirArch(Persona personas,File archColas) {
+       
         try {
-            FileWriter escribir = new FileWriter(nameArch);  //Args del archivo creado, si se sustituye por cadena se crea un nuevo archivo
-            //escribir.write("\r\nPersonas"); //Agregar cadena
-            
-            escribir.close();
-        } catch (IOException ex) {
-            System.out.println("Error al escribir en el archivo");
-        }
-    }
-    
-    public void agregarTexto(){
-        File archivo = new File("");
-        try {
-            FileWriter escribir = new FileWriter(archivo,true); //Permite sobreescribir  
-            //escribir.write("\r\nPersonas"); //Agregar cadena
-            
-            escribir.close();
-        } catch (IOException ex) {
-            System.out.println("Error al escribir en el archivo");
-        }
-        
-    }
-    public void escribirArch(Persona personas,String nameArch) {
-        try {
-            FileWriter escribir = new FileWriter(nameArch,true);
+            FileWriter escribir = new FileWriter(archColas,true);        //True permite añadir en la última posición
                 escribir.write(personas.getNombre()+",");
                 escribir.write(personas.getApellidos()+",");
                 escribir.write(personas.getClaves()+",,"+"\n");  
-                  escribir.close();
+                escribir.close();
         }catch (IOException e){
             System.out.println("Algo salió mal en la escritura de tu archivo.");
             e.printStackTrace();
         }
+        
+        
     }
-    
-    
-    
-    
     
     public void radixExtrn(ArrayList<Persona> list){//list es de personas
         int n=list.size();
-        System.out.println(n);
         num1(n,list);
         
 //        num2(n,list);
@@ -81,13 +71,13 @@ public class RadixExterno {
         for(int i=0;i<n;i++){ //Unidades
             int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%10;
-            ingresar1(aux,i,list/*,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0*/);
+            ingresar1(aux,i,list,archivo1/*,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0*/);
             
         }
-        //extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
+        extraer(list,archivo11,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
 
     }
-    public void num2(int n,ArrayList<Persona> list){
+    /*public void num2(int n,ArrayList<Persona> list){
         int aux;
         for(int i=0;i<n;i++){ //Decenas
             int var = Integer.parseInt(list.get(i).getClaves());    //Para String
@@ -131,13 +121,14 @@ public class RadixExterno {
             ingresar6(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-    }
+    }*/
     
-    public void ingresar1(int x, int  iter,ArrayList<Persona> list/*,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0*/){
+    public void ingresar1(int x, int  iter,ArrayList<Persona> list,File ar1/*,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0*/){
+        
         if(x==1){
 //            col1.offer(list.get(iter));
 //            cola11.add(list.get(iter));
-            escribirArch(list.get(iter),"Cola1.txt");
+            escribirArch(list.get(iter),ar1);    
             
         /*}else if(x==2){
             col2.offer(list.get(iter));
@@ -277,10 +268,24 @@ public class RadixExterno {
     
     
       
-    public static void extraer(ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void extraer(ArrayList<Persona> list,File archFinal,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+        long tamAr=tamanioArchivo(archivo1);
         for(int j=0;j<list.size();j++){
-            if(col1.peek()!=null){
-//                list.set(j, (Persona)col1.poll());      //Para String
+            
+//            if(col1.peek()!=null){
+            
+//            while(tamAr>0){
+//               escribirArch(list.get(j),archFinal);
+//                tamAr--;
+//            }
+            if(tamAr>0 ){
+                //escribirArch(list.set(j, list.get(j)),archFinal);
+                escribirArch(lectura(archivo1),archFinal);
+                tamAr-=1;
+                if(tamAr==0){
+                    //borrarContenido(list,"Cola1.txt");
+                }
+            }
             
 
             /*}else if(col2.peek()!=null){
@@ -301,9 +306,24 @@ public class RadixExterno {
                 list.set(j, (Persona)col9.poll());
             }else if(col0.peek()!=null){
                 list.set(j, (Persona)col0.poll());
-            */}
+            }*/
         }
         
+    }
+    public void vacio(File archivo){
+        
+    }
+    public long tamanioArchivo(File archivoAMedir){
+        long tam=0;
+        try {
+            FileReader fr = new FileReader(archivoAMedir);
+            BufferedReader bf = new BufferedReader(fr);
+            tam=bf.lines().count();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Excepcion");
+        }
+       
+        return tam;
     }
     
     public void imprimir(ArrayList<Persona> list){
@@ -316,4 +336,56 @@ public class RadixExterno {
     
     
     
+    
+    
+    public void borrarContenido(ArrayList<Persona> personas,String nameArch) {
+              int n = personas.size();
+              int i = 0;
+
+              try { 
+
+                  FileWriter myWriter = new FileWriter(nameArch);
+                  Persona persona = new Persona("","","");
+                  while (i<n) {
+                  personas.set(i,  persona);
+                  myWriter.write(personas.get(i).getNombre());
+                  myWriter.write(personas.get(i).getApellidos());
+                  myWriter.write(personas.get(i).getClaves()+"\n");
+                  i = i + 1;
+                  }
+                  myWriter.close();
+                  System.out.println("YA QUEDÓ");
+
+                } 
+                    catch (IOException e) 
+                    {
+                  System.out.println("Algo salió mal borrando el contenido de tu archivo.");
+                  e.printStackTrace();
+                }
+      }
+    
+    public Persona lectura(File archivo) {
+        Scanner stdIn = new Scanner(System.in);
+        Scanner fileIn;
+        String line;
+        String[] cadena;
+        Persona persona=new Persona("","","");
+        try {
+            System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");
+            fileIn = new Scanner(new FileReader(archivo));
+            while (fileIn.hasNextLine()) {
+                line = fileIn.nextLine();
+                cadena=line.split(",");
+
+                persona = new Persona(cadena[0],cadena[1],cadena[2]);
+                return persona;
+            }
+            fileIn.close();
+        }catch (FileNotFoundException e){
+            System.out.println("Error: " );
+        }
+         
+        return persona;
+
+    }
 }
