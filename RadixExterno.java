@@ -25,16 +25,16 @@ public class RadixExterno {
     LinkedList cola8 = new LinkedList();
     LinkedList cola9 = new LinkedList();
     ArrayList<Persona> cola11 = new ArrayList<>();
-    File archivo0;
+    File archivo0= new File("Cola0.txt");
     File archivo1 = new File("Cola1.txt");
-    File archivo2;
-    File archivo3;
-    File archivo4;
-    File archivo5;
-    File archivo6;
-    File archivo7;
-    File archivo8;
-    File archivo9;
+    File archivo2= new File("Cola2.txt");
+    File archivo3= new File("Cola3.txt");
+    File archivo4= new File("Cola4.txt");
+    File archivo5= new File("Cola5.txt");
+    File archivo6= new File("Cola6.txt");
+    File archivo7= new File("Cola7.txt");
+    File archivo8= new File("Cola8.txt");
+    File archivo9= new File("Cola9.txt");
     File archivo11 = new File("Final.txt");
     
 
@@ -280,7 +280,7 @@ public class RadixExterno {
 //            }
             if(tamAr>0 ){
                 //escribirArch(list.set(j, list.get(j)),archFinal);
-                escribirArch(lectura(archivo1),archFinal);
+                escribirArch(lectura(archivo1,j),archFinal);
                 tamAr-=1;
                 if(tamAr==0){
                     //borrarContenido(list,"Cola1.txt");
@@ -364,28 +364,28 @@ public class RadixExterno {
                 }
       }
     
-    public Persona lectura(File archivo) {
+    public Persona lectura(File archivo,int i) {
         Scanner stdIn = new Scanner(System.in);
         Scanner fileIn;
         String line;
+        ArrayList<Persona> personas = new ArrayList<>();
         String[] cadena;
         Persona persona=new Persona("","","");
         try {
-            System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");
             fileIn = new Scanner(new FileReader(archivo));
             while (fileIn.hasNextLine()) {
                 line = fileIn.nextLine();
                 cadena=line.split(",");
 
                 persona = new Persona(cadena[0],cadena[1],cadena[2]);
-                return persona;
+                personas.add(persona);
             }
             fileIn.close();
         }catch (FileNotFoundException e){
             System.out.println("Error: " );
         }
          
-        return persona;
+        return personas.get(i);
 
     }
 }
