@@ -1,10 +1,11 @@
-package Proyecto1;
 
+package proyectoeda1;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-
-
 
 public class RadixExterno {
     LinkedList cola0 = new LinkedList();
@@ -17,113 +18,148 @@ public class RadixExterno {
     LinkedList cola7 = new LinkedList();
     LinkedList cola8 = new LinkedList();
     LinkedList cola9 = new LinkedList();
-
+    ArrayList<Persona> cola11 = new ArrayList<>();
+    
+    
+    
+    public void escibirArch(String nameArch){
+        
+        try {
+            FileWriter escribir = new FileWriter(nameArch);  //Args del archivo creado, si se sustituye por cadena se crea un nuevo archivo
+            //escribir.write("\r\nPersonas"); //Agregar cadena
+            
+            escribir.close();
+        } catch (IOException ex) {
+            System.out.println("Error al escribir en el archivo");
+        }
+    }
+    
+    public void agregarTexto(){
+        File archivo = new File("");
+        try {
+            FileWriter escribir = new FileWriter(archivo,true); //Permite sobreescribir  
+            //escribir.write("\r\nPersonas"); //Agregar cadena
+            
+            escribir.close();
+        } catch (IOException ex) {
+            System.out.println("Error al escribir en el archivo");
+        }
+        
+    }
+    public void escribirArch(Persona personas,String nameArch) {
+        try {
+            FileWriter escribir = new FileWriter(nameArch,true);
+                escribir.write(personas.getNombre()+",");
+                escribir.write(personas.getApellidos()+",");
+                escribir.write(personas.getClaves()+",,"+"\n");  
+                  escribir.close();
+        }catch (IOException e){
+            System.out.println("Algo salió mal en la escritura de tu archivo.");
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
     public void radixExtrn(ArrayList<Persona> list){//list es de personas
         int n=list.size();
-        System.out.println("\nIteración 1 (Ordenamiento por unidades)");
+        System.out.println(n);
         num1(n,list);
-        imprimir(list);
-          System.out.println("------------------");
-          
-    
-        /*num2(n,list);
-        num3(n,list);
-        num4(n,list);
-        num5(n,list);
-        num6(n,list);*/
-        imprimir(list);
+        
+//        num2(n,list);
+//        num3(n,list);
+//        num4(n,list);
+//        num5(n,list);
+//        num6(n,list);
+        //imprimir(list);
     }
     
     public void num1(int n,ArrayList<Persona> list){
         int aux;
-        //imprimir(list);
         for(int i=0;i<n;i++){ //Unidades
-            //int var = list.get(i);        //Para Integer
-        	System.out.print("*****--"+list.get(i).getClaves() );
-        	//int var =5;
             int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%10;
-            System.out.println(aux);
-            ingresar1(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
+            ingresar1(aux,i,list/*,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0*/);
+            
         }
-      //extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
+        //extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
 
     }
-   /* public void num2(int n,ArrayList<String> list){
+    public void num2(int n,ArrayList<Persona> list){
         int aux;
-        for(int i=0;i<n;i++){ //Unidades
-            int var = Integer.parseInt(list.get(i));    //Para String
+        for(int i=0;i<n;i++){ //Decenas
+            int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%100;
             ingresar2(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-
     }
-    public void num3(int n,ArrayList<String> list){
+    public void num3(int n,ArrayList<Persona> list){
         int aux;
-        for(int i=0;i<n;i++){ //Unidades
-            int var = Integer.parseInt(list.get(i));    //Para String
+        for(int i=0;i<n;i++){ //Centenas
+            int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%1000;
             ingresar3(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-
     }
-    public void num4(int n,ArrayList<String> list){
+    public void num4(int n,ArrayList<Persona> list){
         int aux;
-        for(int i=0;i<n;i++){ //Unidades
-            int var = Integer.parseInt(list.get(i));    //Para String
+        for(int i=0;i<n;i++){ //Millares
+            int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%10000;
             ingresar4(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-
     }
-    public void num5(int n,ArrayList<String> list){
+    public void num5(int n,ArrayList<Persona> list){
         int aux;
-        for(int i=0;i<n;i++){ //Unidades
-            int var = Integer.parseInt(list.get(i));    //Para String
+        for(int i=0;i<n;i++){ //Decena de millar
+            int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%100000;
             ingresar5(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-
     }
-    public void num6(int n,ArrayList<String> list){
+    public void num6(int n,ArrayList<Persona> list){
         int aux;
-        for(int i=0;i<n;i++){ //Unidades
-            int var = Integer.parseInt(list.get(i));    //Para String
+        for(int i=0;i<n;i++){ //Centena de millar
+            int var = Integer.parseInt(list.get(i).getClaves());    //Para String
             aux=var%1000000;
             ingresar6(aux,i,list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
         }
         extraer(list,cola1,cola2,cola3,cola4,cola5,cola6,cola7,cola8,cola9,cola0);
-
     }
-    */
-    public static void ingresar1(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    
+    public void ingresar1(int x, int  iter,ArrayList<Persona> list/*,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0*/){
         if(x==1){
-            col1.offer(list.get(iter).getClaves());
-        }else if(x==2){
-            col2.offer(list.get(iter).getClaves());
+//            col1.offer(list.get(iter));
+//            cola11.add(list.get(iter));
+            escribirArch(list.get(iter),"Cola1.txt");
+            
+        /*}else if(x==2){
+            col2.offer(list.get(iter));
         }else if(x==3){
-            col3.offer(list.get(iter).getClaves());
+            col3.offer(list.get(iter));
         }else if(x==4){
-            col4.offer(list.get(iter).getClaves());
+            col4.offer(list.get(iter));
         }else if(x==5){
-            col5.offer(list.get(iter).getClaves());
+            col5.offer(list.get(iter));
         }else if(x==6){
-            col6.offer(list.get(iter).getClaves());
+            col6.offer(list.get(iter));
         }else if(x==7){
-            col7.offer(list.get(iter).getClaves());
+            col7.offer(list.get(iter));
         }else if(x==8){
-            col8.offer(list.get(iter).getClaves());
+            col8.offer(list.get(iter));
         }else if(x==9){
-            col9.offer(list.get(iter).getClaves());
+            col9.offer(list.get(iter));
         }else if(x==0){
-            col0.offer(list.get(iter).getClaves());
-        }
+            col0.offer(list.get(iter));
+        */}
     }
-    public static void ingresar2(int x, int  iter,ArrayList<String> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void ingresar2(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
         if(x>=10 && x<=19){
             col1.offer(list.get(iter));
         }else if(x>=20 && x<=29){
@@ -146,7 +182,7 @@ public class RadixExterno {
             col0.offer(list.get(iter));
         }
     }
-    public static void ingresar3(int x, int  iter,ArrayList<String> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void ingresar3(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
         if(x>=100 && x<=199){
             col1.offer(list.get(iter));
         }else if(x>=200 && x<=299){
@@ -169,7 +205,7 @@ public class RadixExterno {
             col0.offer(list.get(iter));
         }
     }
-    public static void ingresar4(int x, int  iter,ArrayList<String> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void ingresar4(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
         if(x>=1000 && x<=1999){
             col1.offer(list.get(iter));
         }else if(x>=2000 && x<=2999){
@@ -192,7 +228,7 @@ public class RadixExterno {
             col0.offer(list.get(iter));
         }
     }
-    public static void ingresar5(int x, int  iter,ArrayList<String> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void ingresar5(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
            if(x>=10000 && x<=19999){
             col1.offer(list.get(iter));
         }else if(x>=20000 && x<=29999){
@@ -215,7 +251,7 @@ public class RadixExterno {
             col0.offer(list.get(iter));
         }
     }
-    public static void ingresar6(int x, int  iter,ArrayList<String> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
+    public void ingresar6(int x, int  iter,ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
         if(x>=100000 && x<=199999){
             col1.offer(list.get(iter));
         }else if(x>=200000 && x<=299999){
@@ -243,15 +279,11 @@ public class RadixExterno {
       
     public static void extraer(ArrayList<Persona> list,LinkedList col1,LinkedList col2,LinkedList col3,LinkedList col4,LinkedList col5,LinkedList col6,LinkedList col7,LinkedList col8,LinkedList col9,LinkedList col0){
         for(int j=0;j<list.size();j++){
-            
-            //int var = Integer.parseInt(list.get(j));    //Para String
-
-        	
-        	
             if(col1.peek()!=null){
-                //list.set(j, (Integer)col1.poll());    //Para Integer 
-                list.set(j, (Persona)col1.poll());      //Para String
-            }else if(col2.peek()!=null){
+//                list.set(j, (Persona)col1.poll());      //Para String
+            
+
+            /*}else if(col2.peek()!=null){
                 list.set(j, (Persona)col2.poll());
             }else if(col3.peek()!=null){
                list.set(j, (Persona)col3.poll()); 
@@ -269,13 +301,15 @@ public class RadixExterno {
                 list.set(j, (Persona)col9.poll());
             }else if(col0.peek()!=null){
                 list.set(j, (Persona)col0.poll());
-            }
+            */}
         }
         
     }
     
     public void imprimir(ArrayList<Persona> list){
         for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getNombre());
+            System.out.println(list.get(i).getApellidos());
             System.out.println(list.get(i).getClaves());
         }
     }
