@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectoeda1;
 
 /**
  *
  * @author David
  */
+
 public class Persona {
     private String nombres;
     private String apellidos;
@@ -48,10 +45,6 @@ public class Persona {
     	return claves;
     }
     
-    /*public String getApellidos(int i) {
-    	a = apellidos.charAt(0);
-    	System.out.println(apellidos.charAt(1));
-    	return a;
-    }*/
+
 
 }

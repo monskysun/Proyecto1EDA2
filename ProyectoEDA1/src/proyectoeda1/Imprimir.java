@@ -15,4 +15,49 @@ public class Imprimir {
     }
     
     
+    
 }
+
+/*
+
+
+
+    
+    for(i=0;i<list.size();i++){
+        int  cont=0;
+        while(list.get(i).charAt()<=list.get(i+1).charAt()){
+            cont+=1;
+        }
+        for(j=i;j<(j+cont);j++){
+            list.add(j,j+cont)
+        }
+        
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
