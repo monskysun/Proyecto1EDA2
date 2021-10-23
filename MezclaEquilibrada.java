@@ -24,7 +24,7 @@ public class MezclaEquilibrada {
 			
 			Arch1.createArch("Archivo1.txt");
 			Arch2.createArch("Archivo2.txt");
-			personas = leerarch1.LecturaArch();
+			
 			
 			System.out.println("Sin ordenar: \n");
 			

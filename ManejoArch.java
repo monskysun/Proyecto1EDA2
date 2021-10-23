@@ -26,7 +26,7 @@ public class ManejoArch {
     }
 	public void EscribirArch() {
 		try {
-		      FileWriter myWriter = new FileWriter("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");
+		      FileWriter myWriter = new FileWriter("Archivo2.txt");
 		      myWriter.write("Exito");
 		      myWriter.close();
 		      System.out.println("YA QUEDÓ");
