@@ -7,19 +7,19 @@ public class ProyectoEDA1 {
 		public static void main(String[] args) 
 		{
 		Scanner guarda = new Scanner(System.in);
-	    RadixExterno rdx=new RadixExterno();
-	    ArrayList<Persona> personas = new ArrayList<>();
+	    RadixExterno rdx=new RadixExterno(); //llamada a clase Radix
+	    ArrayList<Persona> personas = new ArrayList<>(); 
              Scanner sc = new Scanner(System.in);
 
 	    int opcion=0;
 	    System.out.println("\t\tBIENVENIDO\n");
-            System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");  ////////
-            String nombreArchivo=sc.nextLine();                                     ///////
+            System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");  //
+            String nombreArchivo=sc.nextLine();                                     //
 		ManejoArch leerarch1 = new ManejoArch(); 
                 
-                Polifase poli = new Polifase();
+                Polifase poli = new Polifase(); //llamada a clase Polifase
                 //poli.polifase(personas);
-                rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));                   ///////
+                rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));    //una vez llamada la clase se llaman los metodos con sus respectivos parametros
         	
 		//while(opcion!=4){
 //		    System.out.println("\nSelecciona un algoritmo de ordenamiento externo");
