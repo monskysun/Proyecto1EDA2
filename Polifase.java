@@ -1,16 +1,12 @@
 package Proyecto1;
 import java.util.ArrayList;
 public class Polifase {
-        
        MergeSort merg = new MergeSort();
        
        ImprimirPersona imprimePersona = new ImprimirPersona();
 
        ManejoArch Arch1 = new ManejoArch();
-		
-       ManejoArch Arch2= new ManejoArch();
-		
-       ManejoArch Arch3= new ManejoArch();
+	
        
        LlenarArchivos llenar = new LlenarArchivos();
        
@@ -21,104 +17,101 @@ public class Polifase {
        ArrayList<Persona> personas3 = new ArrayList<>();
        ArrayList<Persona> personas4 = new ArrayList<>();
        
+       ArrayList<Persona> bloque1 = new ArrayList<>();
+       ArrayList<Persona> bloque2 = new ArrayList<>();
+       
+       
        public void polifase(ArrayList<Persona> personas) {
 
 
-		int nF1 = 0,nF2 = 0, numClaves = 0, bloques = 0, numIteracion= 0;
+		int nF1 = 0,nF2 = 0, numClaves = 2, bloques = 0, numIteracion= 0;
 		
 		Arch1.createArch("Archivo1.txt");
-		Arch2.createArch("Archivo2.txt");
-		Arch3.createArch("Archivo3.txt");
-		personas = leerarch1.LecturaArch();             
-	
-		DividirPersonas(personas,personas1,personas2,nF1, nF2,Arch1,Arch2);
+		Arch1.createArch("Archivo2.txt");
+		Arch1.createArch("Archivo3.txt");
+
+		personas = leerarch1.LecturaArch();       
 		
-		//leerarch1.borrarContenido(personas,"Archivo.txt");
-		//System.out.println("\nOriginal ");
-		//imprimePersona.imprimirNom(personas);
+		DividirPersonas(personas,personas1,personas2,nF1, nF2,numClaves);
+		do {
 		nF1 = 0;
 		nF2 = 0;
-		while(personas1.size()>0 || personas2.size()>0) {
-			
-			
-			/*if(personas.size()==1) {
-				nF = nF + llenar.LlenarF1(personas,personasx);// f1 no es un file es una lista 
-				
-			}else if(personas.size()>1) {
-				for (int i = 0; i<2; i++ )  
-				nF = nF + llenar.LlenarF1(personas,personasy);
-			}*/
+		
+		//System.out.println("\n--------\nPersonas3: ");
+		leerarch1.borrarContenido(personas,"Archivo.txt");
+		leerarch1.borrarContenido(personas,"Archivo3.txt");
+		//System.out.println("\nOriginal ");
+		//imprimePersona.imprimirNom(personas);
+		
+		Dividir2Personas2(personas1,personas2,personas3, personas4, nF1,nF2,numClaves,"Archivo.txt","Archivo3.txt");
+		System.out.println("\n--------\nPersonas3: ");
+		imprimePersona.imprimirNom(personas3);
+		System.out.println("\nPersonas4: ");
+		imprimePersona.imprimirNom(personas4);
+		System.out.println("\n-------- ");
+		leerarch1.borrarContenido(personas,"Archivo1.txt");
+		leerarch1.borrarContenido(personas,"Archivo2.txt");
+		numClaves= numClaves*2;
+		Dividir2Personas2(personas3,personas4,personas1, personas2, nF1,nF2,numClaves,"Archivo1.txt","Archivo2.txt");
+		}while(numClaves<9);
+//do while bloques en personas x, y == 1
+		//luego hacer merge en archivo final
+	}
+       
+    public void Dividir2Personas2(ArrayList<Persona> personas1,ArrayList<Persona> personas2,ArrayList<Persona> personas3,ArrayList<Persona> personas4, int nF1,int nF2,int numClaves,String arch,String arch2) {//1 y 2 origen; 3 y 4 destino
+    	while(personas1.size()>0 || personas2.size()>0) {
 			if(personas1.size()>0) {
-				nF1=cambiodeLista(personas1,personas3,nF1);
+				nF1=cambiodeLista(personas1,personas3,nF1,numClaves);
 				
 			}
 			if(personas2.size()>0) {
-				nF2=cambiodeLista(personas2,personas4,nF1);	
+				nF1=cambiodeLista(personas2,personas3,nF1,numClaves);	
 			}
 			if(personas1.size()>0) {
-				nF1=cambiodeLista(personas1,personas3,nF2);
+				nF2=cambiodeLista(personas1,personas4,nF2,numClaves);
 				}
 				if(personas2.size()>0) {
-					nF2=cambiodeLista(personas2,personas4,nF2);	
+					nF2=cambiodeLista(personas2,personas4,nF2,numClaves);	
 				}
-			
 		}
-		System.out.println("\n--------\nPersonas1: ");
-		imprimePersona.imprimirNom(personas1);
-		System.out.println("\nPersonas2: ");
-		imprimePersona.imprimirNom(personas2);
-		System.out.println("\n-------- ");
-		
-		/*LlenarArchivos llenar = new LlenarArchivos();
-		ImprimirPersona imprimePersona = new ImprimirPersona();
-		Arch1.EscribirArchPoli(personas1,Archx,nF1);
-		System.out.println("\nOriginal ");
-	    imprimePersona.imprimirNom(personas);
-	    Arch2.EscribirArchPoli(personas2,Archy,nF2);
-		System.out.println("personas1");
-		imprimePersona.imprimirNom(personas1);
-		System.out.println("personas2");
-		imprimePersona.imprimirNom(personas2);
-		merg.unir(personas1, personas2);
-		imprimePersona.imprimirNom(personas );*/
-		
-		
-	}
-	
-	public void DividirPersonas(ArrayList<Persona> personas,ArrayList<Persona> personas1,ArrayList<Persona> personas2,int nF1, int nF2,ManejoArch Arch1, ManejoArch Arch2) {
+    	PasarListasToArch(personas3,personas4,nF1, nF2,arch,arch2) ;
+
+   	}
+       
+	public void DividirPersonas(ArrayList<Persona> personas,ArrayList<Persona> personas1,ArrayList<Persona> personas2,int nF1, int nF2, int numClaves) {
 		while(personas.size()>0) {
-			nF1=cambiodeLista(personas,personas1,nF1);
+			nF1=cambiodeLista(personas,personas1,nF1,numClaves);
 			if(personas.size()>0) {
-				nF2=cambiodeLista(personas,personas2,nF2);
+				nF2=cambiodeLista(personas,personas2,nF2,numClaves);
 			}
-		} 
-		PasarListasToArch(personas,personas1,personas2, nF1,nF2,"Archivo1.txt","Archivo2.txt");
-		
+		}
+		PasarListasToArch(personas1,personas2, nF1,nF2,"Archivo1.txt","Archivo2.txt");
 	}
-	public int cambiodeLista(ArrayList<Persona> personas, ArrayList<Persona> personasx, int nF) { //personasx es el destino y personas el origen
-		if(personas.size()==1) {
+
+	public int cambiodeLista(ArrayList<Persona> personas, ArrayList<Persona> personasx, int nF,int numClaves) { //personasx es el destino y personas el origen
+		if(personas.size()==1) { 
 			nF = nF + llenar.LlenarF1(personas,personasx);// f1 no es un file es una lista 
-			
 		}else if(personas.size()>1) {
-			for (int i = 0; i<2; i++ )  
-			nF = nF + llenar.LlenarF1(personas,personasx);
+			for (int i = 0; i<numClaves; i++ )  {
+			nF = nF + llenar.LlenarF1(personas,personasx); 
+			if(personas.size()==0)
+				i=numClaves;
+			}
 		}
 		return nF;
 	}
 	
-	public void PasarListasToArch(ArrayList<Persona> personas, ArrayList<Persona> personas1, ArrayList<Persona> personas2, int nF1, int nF2, String Archx,String Archy) {
+	public void PasarListasToArch(ArrayList<Persona> personas1, ArrayList<Persona> personas2, int nF1, int nF2, String Archx,String Archy) {
 		LlenarArchivos llenar = new LlenarArchivos();
 		ImprimirPersona imprimePersona = new ImprimirPersona();
 		Arch1.EscribirArchPoli(personas1,Archx,nF1);
-		System.out.println("\nOriginal ");
-	    imprimePersona.imprimirNom(personas);
-	    Arch2.EscribirArchPoli(personas2,Archy,nF2);
+	    Arch1.EscribirArchPoli(personas2,Archy,nF2);
 		System.out.println("personas1");
 		imprimePersona.imprimirNom(personas1);
 		System.out.println("personas2");
 		imprimePersona.imprimirNom(personas2);
 		merg.unir(personas1, personas2);
-		imprimePersona.imprimirNom(personas );
+	
 		
 	}
 
