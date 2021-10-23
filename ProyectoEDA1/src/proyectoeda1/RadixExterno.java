@@ -244,7 +244,7 @@ public class RadixExterno {
       
     public void extraer(ArrayList<Persona> list,File ar1,File ar2,File ar3,File ar4,File ar5,File ar6,File ar7,File ar8,File ar9,File ar0,File archFinal){
        /* Permite la concatenacion de las colas en el archivo final */
-        long tamAr1=tamanioArchivo(ar1); //
+        long tamAr1=tamanioArchivo(ar1); // contabiliza el tamaño de la cola por medio de tamanioArchivo
         long tamAr2=tamanioArchivo(ar2);
         long tamAr3=tamanioArchivo(ar3);
         long tamAr4=tamanioArchivo(ar4);
@@ -257,11 +257,11 @@ public class RadixExterno {
         int inic=0;
         borrar("Final.txt");        //Se debe vaciar para evitar acoplamiento de información
         for(int j=0;j<list.size();j++){
-            
+            /* La concatenacion se realiza archivo por archivo, con el fin de devolverlo ordenado, el mismo proceso de la primera comparación se repite en los if-else */
             if(tamAr0>0 ){
                 escribirArch(lectura(ar0,inic),archFinal);
                 inic+=1;
-                tamAr0-=1;
+                tamAr0-=1;// resta 1 al valor del tamaño
                 if(tamAr0==0){ //cuando el archivo que almacena estos valores esta vacío se elimina tanto la cola como el archivo
                     borrar("Cola0.txt");
                     persLect.clear();
@@ -353,11 +353,13 @@ public class RadixExterno {
     }
         
     public long tamanioArchivo(File archivoAMedir){
+       /* */
         long tam=0;
         try {
             FileReader fr = new FileReader(archivoAMedir);
-            BufferedReader bf = new BufferedReader(fr);
-            tam=bf.lines().count();
+            BufferedReader bf = new BufferedReader(fr); //BufferedReader sirve para leer un archivo 
+            tam=bf.lines().count(); 
+           //tam es un contador igualado a la lectura del archivo BufferedReader y con .lines hace saltos de linea y .count sirve para contabilizar los saltos de linea
         } catch (FileNotFoundException ex) {
             System.out.println("No se registró una cola de tal número");
         }
@@ -386,7 +388,7 @@ public class RadixExterno {
                 line = fileIn.nextLine();
                 cadena=line.split(",");
 
-                persona = new Persona(cadena[0],cadena[1],cadena[2]);
+                persona = new Persona(cadena[0],cadena[1],cadena[2]); //permite que los atributos pasen individualmente a un arreglo sin perder su integridad 
                 persLect.add(persona);
             }
             fileIn.close();
