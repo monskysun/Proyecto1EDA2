@@ -13,10 +13,10 @@ import java.util.Scanner;
 
 public class RadixExterno {
    
-    ArrayList<Persona> persLect = new ArrayList<>();
+    ArrayList<Persona> persLect = new ArrayList<>();         
     ManejoArch mane = new ManejoArch();
-    File archivo0= new File("Cola0.txt");
-    File archivo1 = new File("Cola1.txt");
+    File archivo0= new File("Cola0.txt");   //archivos auxiliares que permiten separar las claves dependiendo del numero evaluado, sustituyen las colas del radix interno
+    File archivo1= new File("Cola1.txt");   //se usan 10 archivos pues el rango de numeros de las claves es de [0-9], se usará un archivo11 donde se guardara el archivo ya ordenado 
     File archivo2= new File("Cola2.txt");
     File archivo3= new File("Cola3.txt");
     File archivo4= new File("Cola4.txt");
@@ -29,8 +29,8 @@ public class RadixExterno {
     
     
     public void radixExtrn(ArrayList<Persona> list){//list es de personas
-        int n=list.size();
-        num1(n,list);
+        int n=list.size(); //los datos del archivo son guardados en una lista y n es el tamaño de esta misma
+        num1(n,list);      //
         num2(n,mane.LecturaArch("Final.txt"));
         num3(n,mane.LecturaArch("Final.txt"));
         num4(n,mane.LecturaArch("Final.txt"));
