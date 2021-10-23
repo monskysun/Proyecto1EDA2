@@ -33,7 +33,7 @@ public class ManejoArch {
                   FileWriter myWriter = new FileWriter("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");
                   myWriter.write("Exito");
                   myWriter.close();
-                  System.out.println("YA QUEDÓ");
+                  System.out.println("YA QUEDÓ");ikk
                 } 
                     catch (IOException e) 
                     {
