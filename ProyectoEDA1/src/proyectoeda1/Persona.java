@@ -7,19 +7,21 @@ package proyectoeda1;
  */
 
 public class Persona {
+    /* Clase Persona de tipo objetos que tiene como atributos nombres, apellidos y claves */ 
     private String nombres;
     private String apellidos;
     private String claves;
     
-    public Persona( String nombres,String apellidos, String claves){ // Constructor 
+    /* Constructor cuyo objetivo es obligar a y controlar cómo se inicializa una instancia de una determinada clase en este caso tiene el construcor recibe el mismo nombre de la clase*/
+    public Persona( String nombres,String apellidos, String claves){ //Constructor con parametros 
     	this.nombres= nombres;
     	this.apellidos = apellidos;
     	this.claves = claves;
     }
-    public Persona(){ // Constructor 
+    public Persona(){ // Constructor sin parametos 
 
     }
-      
+    /* Los metodos set### permiten modificar el valor de uno de los atributos del objeto */  
     public void setNombre(String nombres) {
     	this.nombres= nombres;
     	
@@ -33,7 +35,7 @@ public class Persona {
     	this.claves= claves;
     	
     }
-    
+    /* Los metodos get### permiten acceder al valor, en el programa son muy usados para su visualisación*/
     public String getNombre() {
     	return nombres;
     }
