@@ -10,15 +10,23 @@ import java.util.ArrayList;
 public class ImprimirPersona {
 	
 	
-	public void imprimirNom(ArrayList<Persona> personas ){
-		
-		for(int i = 0; i<personas.size();i++) {
-			
-			System.out.print(personas.get(i).getNombre()+" ");
-			System.out.print(personas.get(i).getApellidos()+" ");
-			System.out.print(personas.get(i).getClaves()+" \n");
-	
-    	}
+    public void imprimirNom(ArrayList<Persona> personas ){
+
+        for(int i = 0; i<personas.size();i++) {
+
+            System.out.print(personas.get(i).getNombre()+" ");
+            System.out.print(personas.get(i).getApellidos()+" ");
+            System.out.print(personas.get(i).getClaves()+" \n");
+
+        }
+    }
+    
+    public void imprimirListList(ArrayList<ArrayList<Persona>> personasLisLis ){
+        System.out.println("***************************");
+        for (int i = 0; i < personasLisLis.size(); i++) {
+            imprimirNom(personasLisLis.get(i));
+            System.out.println("");
+        }
     }
 
 

@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package proyectoeda1;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,7 +10,7 @@ import java.io.*;
 
 public class ManejoArch {
 	
-    public void createArch(String nameArch) {
+     public void createArch(String nameArch) {
         try {
             File arch1 = new File(nameArch);//Especifica ruta y nombre del archivo  
             if (arch1.createNewFile()) {
@@ -36,7 +40,7 @@ public class ManejoArch {
                 }
       }
 
-    public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch) {
+    public void EscribirArch(ArrayList<Persona> personas,String nameArch) {
 		try { 
 
 			  int i = 0;

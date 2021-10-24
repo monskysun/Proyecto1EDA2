@@ -17,10 +17,10 @@ public class ProyectoEDA1 {
         
         int opcion=0;	
         System.out.println("\t\tBIENVENIDO\n");
-        System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");  ////////
-        String nombreArchivo=guarda.nextLine();                                     ///////    
+        System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) "); 
+        String nombreArchivo=guarda.nextLine();                                  
         
-        //poli.polifase(personas);
+        //poli.polifase2(personas);
         
         mezc.mezclEqui(leerarch1.LecturaArch(nombreArchivo));
         //rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));
@@ -34,7 +34,8 @@ public class ProyectoEDA1 {
 //          switch(opcion){ 
 //			case 1:// Poli
 //		                break;
-//			case 2:// Mezcla	
+//			case 2:// Mezcla
+//                                mezc.mezclEqui(leerarch1.LecturaArch(nombreArchivo));
 //		                break;
 //			case 3:// Radix	
 //		            rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));
