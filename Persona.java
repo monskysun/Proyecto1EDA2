@@ -16,7 +16,6 @@ public class Persona {
     public Persona(){
 
     }
-      
     public void setNombre(String nombres) {
     	this.nombres= nombres;
     	

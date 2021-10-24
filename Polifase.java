@@ -16,6 +16,7 @@ public class Polifase {
        ArrayList<Persona> personas2 = new ArrayList<>();
        ArrayList<Persona> personas3 = new ArrayList<>();
        ArrayList<Persona> personas4 = new ArrayList<>();
+       ArrayList<Persona> personas5 = new ArrayList<>();
        
        ArrayList<Persona> personasF = new ArrayList<>();
        
@@ -30,10 +31,10 @@ public class Polifase {
 		Arch1.createArch("ArchivoF.txt");
 		
 		
-		personas = leerarch1.LecturaArch();       
+		personas = leerarch1.LecturaArch("Archivo.txt");       
 		
 		DividirPersonas(personas,personas1,personas2,nF1, nF2,numClaves);
-		do {
+		
 		nF1 = 0;
 		nF2 = 0;
 		
@@ -53,21 +54,8 @@ public class Polifase {
 		leerarch1.borrarContenido(personas,"Archivo2.txt");
 		numClaves= numClaves*2;
 		Dividir2Personas2(personas3,personas4,personas1, personas2, nF1,nF2,numClaves,"Archivo1.txt","Archivo2.txt");
-		}while(numClaves<16);
+	
 		
-		System.out.println("\n--------\nPersonas3: ");
-		personas3 = leerarch1.LecturaArch();  
-		imprimePersona.imprimirNom(personas3);
-		System.out.println("\n--------\nPersonas4: ");
-		personas4 = leerarch1.LecturaArch();   
-		imprimePersona.imprimirNom(personas3);
-		
-		personasF = merg.unir(personas3, personas4);
-		
-		System.out.println("\n--------\nPersonasF: ");
-		
-		imprimePersona.imprimirNom(personasF);
-		Arch1.EscribirArchPoli(personasF,"ArchivoF.txt",personasF.size());
 	}
        /*
         

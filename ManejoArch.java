@@ -24,19 +24,7 @@ public class ManejoArch {
 		 		  e.printStackTrace();
 		 	  }
     }
-	public void EscribirArch() {
-		try {
-		      FileWriter myWriter = new FileWriter("Archivo2.txt");
-		      myWriter.write("Exito");
-		      myWriter.close();
-		      System.out.println("YA QUEDÓ");
-		    } 
-			catch (IOException e) 
-			{
-		      System.out.println("Algo salió mal en la escritura de tu archivo.");
-		      e.printStackTrace();
-		    }
-	  }
+
 	
 	public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch,int n) {
 		try { 
@@ -52,7 +40,7 @@ public class ManejoArch {
 		      i = i + 1;
 		      }
 		      myWriter.close();
-		      System.out.println("YA QUEDÓ");
+		   
 		    } 
 			catch (IOException e) 
 			{
@@ -61,7 +49,7 @@ public class ManejoArch {
 		    }
 	  }
 	
-	  public ArrayList<Persona> LecturaArch() {
+	  public ArrayList<Persona> LecturaArch(String nombreArch) {
 			Scanner stdIn = new Scanner(System.in);
 			Scanner fileIn;
 			String line;
@@ -69,8 +57,7 @@ public class ManejoArch {
 		    String[] cadena;
 		  
 			try {
-		          System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");
-		          fileIn = new Scanner(new FileReader(stdIn.nextLine()));
+		          fileIn = new Scanner(new FileReader(nombreArch));
 		          while (fileIn.hasNextLine()) {
 			      line = fileIn.nextLine();
 			      cadena=line.split(",");

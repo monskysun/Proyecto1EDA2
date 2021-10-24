@@ -16,16 +16,14 @@ public class Main {
 	    System.out.println("\t\tBIENVENIDO\n");
 		ManejoArch leerarch1 = new ManejoArch(); 
 
+		
+		 PoliPrueba poli= new PoliPrueba();
+		 poli.poliprueba(personas);
+       	//Polifase poli = new Polifase();
+       	//poli.polifase(personas);
 
-       	Polifase poli = new Polifase();
-       	poli.polifase(personas);
-       	
-
-		MezclaEquilibrada  mezcla = new MezclaEquilibrada();
-		mezcla.MezclaEquilibrada(personas);
-
-
-
+		//MezclaEquilibrada  mezcla = new MezclaEquilibrada();
+		//mezcla.mezclEqui(personas);
 
 		while(opcion!=4){
 		    System.out.println("\nSelecciona un algoritmo de ordenamiento externo");
