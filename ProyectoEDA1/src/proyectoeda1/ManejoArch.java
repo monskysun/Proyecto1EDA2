@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectoeda1;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,47 +36,33 @@ public class ManejoArch {
                 }
       }
 
-    public void EscribirArch(ArrayList<Persona> personas,String nameArch,int n) {
-        try { 
-            int i = 0;
-            FileWriter myWriter = new FileWriter(nameArch);
-            while (i<n) {
+    public void EscribirArchPoli(ArrayList<Persona> personas,String nameArch) {
+		try { 
 
-                myWriter.write(personas.get(i).getNombre()+",");
-                myWriter.write(personas.get(i).getApellidos()+",");
-                myWriter.write(personas.get(i).getClaves()+",,"+"\n");
+			  int i = 0;
+		      FileWriter myWriter = new FileWriter(nameArch);
+		      while (i<personas.size()) {
+		    
+			      myWriter.write(personas.get(i).getNombre()+",");
+			      myWriter.write(personas.get(i).getApellidos()+",");
+			      myWriter.write(personas.get(i).getClaves()+",,"+"\n");
+			      
+			      i = i + 1;
+		      }
+		      myWriter.close();
+		   
+		    } 
+			catch (IOException e) 
+			{
+		      System.out.println("Algo salió mal en la escritura de tu archivo.");
+		      e.printStackTrace();
+		    }
+	  }
 
-            i = i + 1;
-            }
-            myWriter.close();
-            System.out.println("YA QUEDÓ");
-        }catch (IOException e){
-            System.out.println("Algo salió mal en la escritura de tu archivo.");
-            e.printStackTrace();
-        }
-    }
-    public void EscribirArchRep(ArrayList<Persona> personas,String nameArch,int n) {
-        try { 
-            int i = 0;
-            FileWriter myWriter = new FileWriter(nameArch,true);
-            while (i<n) {
 
-                myWriter.write(personas.get(i).getNombre()+",");
-                myWriter.write(personas.get(i).getApellidos()+",");
-                myWriter.write(personas.get(i).getClaves()+",,"+"\n");
-
-            i = i + 1;
-            }
-            myWriter.close();
-            System.out.println("YA QUEDÓ");
-        }catch (IOException e){
-            System.out.println("Algo salió mal en la escritura de tu archivo.");
-            e.printStackTrace();
-        }
-    }
     
-
-      public ArrayList<Persona> LecturaArch(String nombreArch) {
+   
+      public ArrayList<Persona> LecturaArch(String nombreArch) {    ///////////////////////// Añadir parámetro
                     Scanner stdIn = new Scanner(System.in);
                     Scanner fileIn;
                     String line;
@@ -89,7 +71,7 @@ public class ManejoArch {
 
                     try {
                       
-                      fileIn = new Scanner(new FileReader(nombreArch));
+                      fileIn = new Scanner(new FileReader(nombreArch));     /////////////////Ingresar parámetro
                       while (fileIn.hasNextLine()) {
                           line = fileIn.nextLine();
                           cadena=line.split(",");
@@ -144,7 +126,7 @@ public class ManejoArch {
             FileWriter escribir = new FileWriter(archColas,true);        //True permite añadir en la última posición
                 escribir.write(personas.getNombre()+",");
                 escribir.write(personas.getApellidos()+",");
-                escribir.write(personas.getClaves()+",,"+"\n");
+                escribir.write(personas.getClaves()+",,"+"\n");  
                 escribir.close();
         }catch (IOException e){
             System.out.println("Algo salió mal en la escritura de tu archivo.");
