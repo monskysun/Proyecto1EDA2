@@ -41,12 +41,15 @@ public class MezclaEquilibrada {
                 if(!noOrdenado){
                     pers1.add(auxiliar);
 //                    mane.escribirArch(list.get(i), archF1);
+                    
                     if(i+1==list.size()){                                   //Condición para la última iteración
                         ArrayList<Persona> pers3 = new ArrayList<>(pers1);  
                         if(!pers3.isEmpty()){
                             personas1.add(pers3);
+                            
                         }
                         pers1.clear();
+                        
                     }
                 }else if(noOrdenado){
                     pers2.add(auxiliar);
@@ -59,6 +62,7 @@ public class MezclaEquilibrada {
                         pers2.clear();
                     }
                 }
+
             }else{
                 inicio=valor;
                 ArrayList<Persona> pers3 = new ArrayList<>(pers1);      //Copia y vaciado de la primera lista
@@ -66,6 +70,7 @@ public class MezclaEquilibrada {
                     personas1.add(pers3);
                 }
                 pers1.clear();
+                
                 
                 ArrayList<Persona> pers4 = new ArrayList<>(pers2);      //Copia y vaciado de la segunda lista tras ingresarse a la lista de listas
                 if(!pers4.isEmpty()){
@@ -84,7 +89,18 @@ public class MezclaEquilibrada {
                 } 
             }
             i+=1;
+            
         }
+        if(!personas1.isEmpty()){
+            if(pers1.size()==0){
+                for(int j=0;j<personas1.size();j++){
+                    for (int k = 0; k < personas1.get(j).size(); k++) {
+                        mane.escribirArch(personas1.get(j).get(k),archivo1);
+                    }
+                }
+            }  
+        }
+        
     }
     
     
