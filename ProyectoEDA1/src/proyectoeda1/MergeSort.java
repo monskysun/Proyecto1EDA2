@@ -17,8 +17,6 @@ public class MergeSort {
     	return personas3;
     	
     }
-    /* El algoritmo de ordenamiento merge sort sera utilizado en el algortimo de polifase a la hora de hacer las fusiones de los bloques, en esta ocasion trabaja con listas 
-    de objetos */
     public void mergeSort(ArrayList<Persona> list,int p, int r){   
         char index;
         int q;

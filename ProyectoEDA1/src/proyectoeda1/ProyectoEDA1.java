@@ -4,36 +4,40 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class ProyectoEDA1 {
 	
-		public static void main(String[] args) 
-		{
-		Scanner guarda = new Scanner(System.in);
-	    RadixExterno rdx=new RadixExterno(); //llamada a clase Radix
-	    ArrayList<Persona> personas = new ArrayList<>(); 
-             Scanner sc = new Scanner(System.in);
-
-	    int opcion=0;
-	    System.out.println("\t\tBIENVENIDO\n");
-            System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");  //
-            String nombreArchivo=sc.nextLine();                                     //
-		ManejoArch leerarch1 = new ManejoArch(); 
+    public static void main(String[] args){
+	Scanner guarda = new Scanner(System.in);
+	ArrayList<Persona> personas = new ArrayList<>();
+        
+	ManejoArch leerarch1 = new ManejoArch();
+        Polifase poli = new Polifase();
+        RadixExterno rdx=new RadixExterno();
+        MezclaEquilibrada mezc = new MezclaEquilibrada();
+        
+        
+        
+        int opcion=0;	
+        System.out.println("\t\tBIENVENIDO\n");
+        System.out.print("Introduzca el nombre del archivo:  (Archivo.txt) ");  ////////
+        String nombreArchivo=guarda.nextLine();                                     ///////    
+        
+        //poli.polifase(personas);
+        
+        mezc.mezclEqui(leerarch1.LecturaArch(nombreArchivo));
+        //rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));
                 
-                Polifase poli = new Polifase(); //llamada a clase Polifase
-                //poli.polifase(personas);
-                rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));    //una vez llamada la clase se llaman los metodos con sus respectivos parametros
-        	
-		//while(opcion!=4){
-//		    System.out.println("\nSelecciona un algoritmo de ordenamiento externo");
-//		    System.out.println("1)Polifase  2) Mezcla 3)Radix Sort  4)Salir");
-//		    //opcion=guarda.nextInt();
+	//while(opcion!=4){
+//          System.out.println("\nSelecciona un algoritmo de ordenamiento externo");
+//          System.out.println("1)Polifase  2) Mezcla 3)Radix Sort  4)Salir");
+//		//opcion=guarda.nextInt();
 //		   
 //		        
-//		    switch(opcion){ 
+//          switch(opcion){ 
 //			case 1:// Poli
 //		                break;
 //			case 2:// Mezcla	
 //		                break;
 //			case 3:// Radix	
-//		            
+//		            rdx.radixExtrn(leerarch1.LecturaArch(nombreArchivo));
 //		                break;
 //			case 4:// salir		
 //		                break;
@@ -41,7 +45,7 @@ public class ProyectoEDA1 {
 //			    System.out.println("\tSELECCIONA UNA OPCIÓN VÁLIDA\n"); 
 //			             
 //			}
-		//}
+            //}
 		System.out.println("\n\tHASTA LUEGO:)\n");
 			}
 }
