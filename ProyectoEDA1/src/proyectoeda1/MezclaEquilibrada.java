@@ -40,7 +40,6 @@ public class MezclaEquilibrada {
                 inicio=valor;
                 if(!noOrdenado){
                     pers1.add(auxiliar);
-//                    mane.escribirArch(list.get(i), archF1);
                     
                     if(i+1==list.size()){                                   //Condición para la última iteración
                         ArrayList<Persona> pers3 = new ArrayList<>(pers1);  
@@ -53,7 +52,6 @@ public class MezclaEquilibrada {
                     }
                 }else if(noOrdenado){
                     pers2.add(auxiliar);
-//                    mane.escribirArch(list.get(i), archF2);
                     if(i+1==list.size()){                                   //Condición para la última iteración
                         ArrayList<Persona> pers4 = new ArrayList<>(pers2);
                         if(!pers4.isEmpty()){
@@ -80,22 +78,29 @@ public class MezclaEquilibrada {
                 
                 if(!noOrdenado){
                     pers2.add(auxiliar);
-//                    mane.escribirArch(list.get(i), archF2);
                     noOrdenado=entra;
                 }else if(noOrdenado){
                     pers1.add(auxiliar);
-//                    mane.escribirArch(list.get(i), archF1);
                     noOrdenado=!entra;
                 } 
             }
             i+=1;
             
         }
-        if(!personas1.isEmpty()){
+        if(!personas1.isEmpty()){           //Vaciado de la lista 1 de listas de personas en el archivo 1 (F1)
             if(pers1.size()==0){
                 for(int j=0;j<personas1.size();j++){
                     for (int k = 0; k < personas1.get(j).size(); k++) {
                         mane.escribirArch(personas1.get(j).get(k),archivo1);
+                    }
+                }
+            }  
+        }
+        if(!personas2.isEmpty()){           //Vaciado de la lista 2 de listas de personas en el archivo 2 (F2)
+            if(pers2.size()==0){
+                for(int j=0;j<personas2.size();j++){
+                    for (int k = 0; k < personas2.get(j).size(); k++) {
+                        mane.escribirArch(personas2.get(j).get(k),archivo2);
                     }
                 }
             }  
