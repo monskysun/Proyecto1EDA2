@@ -133,8 +133,8 @@ public class Polifase2 {
 		
 		//Se imprime en patalla el resultado final 
 		System.out.println(" personas3Bloques :");
-		imprimePersona.imprimirNom(personas3Bloques.get(0));
-		System.out.println("Size: "+personas3Bloques.get(0).size());
+		imprimePersona.apellidos(personas3Bloques.get(0));
+	
 	}
 	//La siguiente funcion e sun conjutno de otras con la cual se escribe en un archivo, se lee, se pasa a listas y se borra su contenido
 	public void dos(ArrayList<ArrayList<Persona>> personasxBloques, String Archx,int[] bloque1,ArrayList<Persona> personas,ArrayList<ArrayList<Persona>> personasyBloques, String Archy,int[] bloque2,ArrayList<ArrayList<Persona>> aux,ArrayList<ArrayList<Persona>> aux1) {
