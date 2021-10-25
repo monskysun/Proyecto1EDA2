@@ -55,25 +55,26 @@ public class Polifase2 {
     ArrayList< ArrayList<Persona>> BloquesTot2 = new ArrayList< ArrayList<Persona>>(Arrays.asList(bloque6,bloque7,bloque8,bloque9,bloque10)); 
     
 	public void polifase2(ArrayList<Persona> personas) {
-		p.add(vacio);
-		p.add(vacio);
-		int nF1 =0, nF2 =0, j = 0;
-		int numClaves=2;
-		
-		int[] bloque1;
-		
-	
-		
 		personas =  archivos.LecturaArch("FO.txt");
+		int nF1 =0, nF2 =0, j = 0;
+		int numClaves; // Es el numero de claves que va a leer por bloque
 		
+		if(personas.size()%2!= 0)
+			numClaves=(personas.size()/5)+1;
+		else
+			numClaves=(personas.size()/5);
+		
+		int[] bloque1; // para contar los bloques de una lista de personas
+		
+		
+		// Se crean los archivos para polifase
 		archivos.createArch("Archivo1.txt");
 		archivos.createArch("Archivo2.txt");
 		archivos.createArch("Archivo3.txt");
 		archivos.createArch("Archivo0.txt");
-		
 		archivos.createArch("ArchivoFinal.txt");
-		imprimePersona.imprimirNom(personas);
-		//Divide la lista original en 2 
+		
+		//Divide la lista original en 2 listas
 		while(personas.size()>0) {
 			if(personas.size()>0) {
 				cambiodeLista(personas,BloquesTot1.get(j),nF1,numClaves);
@@ -86,13 +87,15 @@ public class Polifase2 {
 			}
 		}
 		
-		
+		//imprime todas las listas de personas
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///i
+		
+		// A continuación se pasan los datos del archivo original a los acchivos auxiliares
 		//---------------------------------
 		
 		bloque1 =bloquesCont(personas0Bloques); 
 		pAux=lecturaEscritura(personas0Bloques,personas,bloque1,aux,"Archivo0.txt");
-		archivos.borrarContenido(pAux,"Archivo0.txt");
+		//archivos.borrarContenido(pAux,"Archivo0.txt");
 		
 	
 		bloque1 =bloquesCont(personas1Bloques); 
@@ -100,33 +103,40 @@ public class Polifase2 {
 		archivos.borrarContenido(pAux,"Archivo1.txt");
 		
 		
-		
+		//imprime todas las listas de personas
 		//---------------------------------
-		
+		// Se pasan mediante merge los bloques de P0 y P1 a P2 y P3 de forma alternada
 		DividirPersonasx(personas0Bloques,personas1Bloques,personas2Bloques , personas3Bloques );
 	
 		
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 		
-		while(personas3Bloques.get(0).size()!=9) {
+		//mientras la lista final no tenga un bloque del tamaño de las claves totales realiza merge de archivos e imprime el resultado
+		
+		while(personas3Bloques.get(0).size()!=9) { 
 			System.out.println("Size: "+personas3Bloques.get(0).size());
 			DividirPersonasx(personas2Bloques,personas3Bloques,personas0Bloques ,personas1Bloques );
 			imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 			DividirPersonasx(personas0Bloques,personas1Bloques,personas2Bloques ,personas3Bloques );
 			imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 		}
+		//imprime todas las listas de personas
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 		int i = 0;
+		
+		//Se pasan los resultados al archivo final
 		while(i<personas3Bloques.size()) {
 			archivos.EscribirArch(personas3Bloques.get(i),"ArchivoFinal.txt");
 		   
 		    i = i+1;
 			}
 		
+		//Se imprime en patalla el resultado final 
 		System.out.println(" personas3Bloques :");
 		imprimePersona.imprimirNom(personas3Bloques.get(0));
 		System.out.println("Size: "+personas3Bloques.get(0).size());
 	}
+	//La siguiente funcion e sun conjutno de otras con la cual se escribe en un archivo, se lee, se pasa a listas y se borra su contenido
 	public void dos(ArrayList<ArrayList<Persona>> personasxBloques, String Archx,int[] bloque1,ArrayList<Persona> personas,ArrayList<ArrayList<Persona>> personasyBloques, String Archy,int[] bloque2,ArrayList<ArrayList<Persona>> aux,ArrayList<ArrayList<Persona>> aux1) {
 		
 		bloque1 =bloquesCont(personasxBloques); 
@@ -139,6 +149,7 @@ public class Polifase2 {
 		
 	}
 	
+	//La siguiente funcion sirve para pasar bloques de personas un archivo
 	
 	public void PasarListasToArch(ArrayList<ArrayList<Persona>> personasxBloques, String Archx) {
 		LlenarArchivos llenar = new LlenarArchivos();
@@ -151,6 +162,7 @@ public class Polifase2 {
 		}
 		
 	}
+	//La siguiente funcion sirve para escribir en un archivo, leerlo y poner los elementos en listas
 	
 	public ArrayList<Persona>  lecturaEscritura(ArrayList<ArrayList<Persona>> personasxBloques,ArrayList<Persona> personas,int[] bloque1, ArrayList<ArrayList<Persona>> auxi, String nameAchi) {
 		ManejoArch archivos = new ManejoArch(); 
@@ -165,7 +177,7 @@ public class Polifase2 {
 		
 		return paux;
 	}
-
+	//La siguiente funcion sirve para volver a poner los bloques de personas en una lista 
 	public ArrayList<Persona>  reparte(ArrayList<ArrayList<Persona>> personasxBloques, ArrayList<Persona> personas,int[] bloquex, ArrayList<ArrayList<Persona>> aux) {
 		LlenarArchivos llenar = new LlenarArchivos();
 		ArrayList<Persona> pAux = new ArrayList<>(personas);
@@ -181,6 +193,7 @@ public class Polifase2 {
 		
 	}
 	
+	// La sigueinte funcion cuenta cuantos bloques tiene una lista
 	public int[] bloquesCont(ArrayList<ArrayList<Persona>> personasxBloques ) {
 		
 		int[] bloque1 = new int[personasxBloques .size()];
@@ -191,6 +204,7 @@ public class Polifase2 {
 
 		return bloque1;
 	}
+	// La sigueinte funcion imprime los bloques de la lista
 	public void imprimeBloquesA(ArrayList<ArrayList<Persona>> personas0Bloques ,ArrayList<ArrayList<Persona>> personas1Bloques,ArrayList<ArrayList<Persona>> personas2Bloques,ArrayList<ArrayList<Persona>> personas3Bloques) {
 	
 		System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" );
@@ -203,6 +217,8 @@ public class Polifase2 {
 		System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB/" );
 
 	}
+	
+	// La sigueinte funcion sirve  para imprimir un elemento de una lista de listas de personas.
 	public void imprimeLdeBloquesB(ArrayList<ArrayList<Persona>> personas0Bloques ,ArrayList<ArrayList<Persona>> personas1Bloques,ArrayList<ArrayList<Persona>> personas2Bloques,ArrayList<ArrayList<Persona>> personas3Bloques) {
 		
 		System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP" );
@@ -218,6 +234,7 @@ public class Polifase2 {
 		System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/" );
 
 	}
+	// La sigueinte funcion sirve de complemento para imprimir un elemento de una lista de listas de personas.
 	
 	public void imprimeItera(ArrayList<ArrayList<Persona>> Personasiy ) {
 	
@@ -228,6 +245,7 @@ public class Polifase2 {
 
 	}
 
+	//esta funcion es para hacer merge entre las personas 
 	public void DividirPersonasx(ArrayList< ArrayList<Persona>> Personasix,ArrayList<ArrayList<Persona>> Personasiy,ArrayList<ArrayList<Persona>> Personasfx,ArrayList<ArrayList<Persona>> Personasfy) {
 		MergeSort merg = new MergeSort();
 		while(Personasix.size()>0||Personasiy.size()>0) {
@@ -255,6 +273,7 @@ public class Polifase2 {
 
 	}
 
+	// Esta funcion sirve para cambiar de una lista personas a una lista x.
 	public int cambiodeLista(ArrayList<Persona> personas, ArrayList<Persona> personasx, int nF,int numClaves) { //personasx es el destino y personas el origen
 		if(personas.size()==1) { 
 			nF = nF + llenar.LlenarF1(personas,personasx);// f1 no es un file es una lista 
