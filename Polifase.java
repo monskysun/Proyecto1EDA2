@@ -1,4 +1,5 @@
-package Proyecto1;
+package proyectoeda1;
+
 import java.util.ArrayList;
 public class Polifase {
        MergeSort merg = new MergeSort();
@@ -7,7 +8,6 @@ public class Polifase {
 
        ManejoArch Arch1 = new ManejoArch();
 	
-       
        LlenarArchivos llenar = new LlenarArchivos();
        
        ManejoArch leerarch1 = new ManejoArch(); 
@@ -41,9 +41,7 @@ public class Polifase {
 		//System.out.println("\n--------\nPersonas3: ");
 		leerarch1.borrarContenido(personas,"Archivo.txt");
 		leerarch1.borrarContenido(personas,"Archivo3.txt");
-		//System.out.println("\nOriginal ");
-		//imprimePersona.imprimirNom(personas);
-		
+	
 		Dividir2Personas2(personas1,personas2,personas3, personas4, nF1,nF2,numClaves,"Archivo.txt","Archivo3.txt");
 		System.out.println("\n--------\nPersonas3: ");
 		imprimePersona.imprimirNom(personas3);
@@ -57,14 +55,7 @@ public class Polifase {
 	
 		
 	}
-       /*
-        
-        personas3 = leerarch1.LecturaArch();    
-		personas4 = leerarch1.LecturaArch();    
-//do while bloques en personas x, y == 1
-		//luego hacer merge en archivo fo
-        * */
-       
+      
     public void Dividir2Personas2(ArrayList<Persona> personas1,ArrayList<Persona> personas2,ArrayList<Persona> personas3,ArrayList<Persona> personas4, int nF1,int nF2,int numClaves,String arch,String arch2) {//1 y 2 origen; 3 y 4 destino
     	while(personas1.size()>0 || personas2.size()>0) {
 			if(personas1.size()>0) {
@@ -94,7 +85,7 @@ public class Polifase {
 		}
 		PasarListasToArch(personas1,personas2, nF1,nF2,"Archivo1.txt","Archivo2.txt");
 	}
-
+	
 	public int cambiodeLista(ArrayList<Persona> personas, ArrayList<Persona> personasx, int nF,int numClaves) { //personasx es el destino y personas el origen
 		if(personas.size()==1) { 
 			nF = nF + llenar.LlenarF1(personas,personasx);// f1 no es un file es una lista 
@@ -111,8 +102,8 @@ public class Polifase {
 	public void PasarListasToArch(ArrayList<Persona> personas1, ArrayList<Persona> personas2, int nF1, int nF2, String Archx,String Archy) {
 		LlenarArchivos llenar = new LlenarArchivos();
 		ImprimirPersona imprimePersona = new ImprimirPersona();
-		Arch1.EscribirArchPoli(personas1,Archx,nF1);
-	    Arch1.EscribirArchPoli(personas2,Archy,nF2);
+		Arch1.EscribirArch(personas1,Archx);
+	    Arch1.EscribirArch(personas2,Archy);
 		System.out.println("personas1");
 		imprimePersona.imprimirNom(personas1);
 		System.out.println("personas2");

@@ -1,4 +1,4 @@
-package Proyecto1;
+package proyectoeda1;
 import java.util.ArrayList;
 
 public class MergeSort {
@@ -6,11 +6,17 @@ public class MergeSort {
     ImprimirPersona imprimePersona = new ImprimirPersona();
     
     public ArrayList<Persona> unir(ArrayList<Persona> personas1,ArrayList<Persona> personas2) {
+    	
     	ArrayList<Persona> personas3;
+    	
+    	
     	(personas3=  new ArrayList<>(personas1)).addAll(personas2);
         System.out.println("\n--------------------------------------");
         mergeSort(personas3,0, personas3.size()-1);
         imprimePersona.imprimirNom(personas3);
+ 
+        System.out.println("\n--------------------------------------");
+        
     	return personas3;
     	
     }

@@ -1,4 +1,4 @@
-package Proyecto1;
+package proyectoeda1;
 
 import java.io.File; //Para trabajar con archivos
 import java.util.ArrayList;
@@ -17,13 +17,16 @@ public class Main {
 		ManejoArch leerarch1 = new ManejoArch(); 
 
 		
-		 PoliPrueba poli= new PoliPrueba();
-		 poli.poliprueba(personas);
-       	//Polifase poli = new Polifase();
-       	//poli.polifase(personas);
+		//PoliPrueba poli= new PoliPrueba();
+		//poli.poliprueba(personas);
+       	Polifase2 poli = new Polifase2();
+       	poli.polifase2(personas);
 
 		//MezclaEquilibrada  mezcla = new MezclaEquilibrada();
 		//mezcla.mezclEqui(personas);
+		 
+		//Comparacion compi = new Comparacion();
+		//compi.comparacion();
 
 		while(opcion!=4){
 		    System.out.println("\nSelecciona un algoritmo de ordenamiento externo");

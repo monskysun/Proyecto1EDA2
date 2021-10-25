@@ -1,4 +1,4 @@
-package Proyecto1;
+package proyectoeda1;
 
 import java.util.ArrayList;
 

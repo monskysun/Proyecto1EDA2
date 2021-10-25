@@ -1,7 +1,4 @@
-package Proyecto1;
-
-
-import java.util.ArrayList;
+package proyectoeda1;
 
 public class Persona {
     private String nombres;
@@ -13,9 +10,10 @@ public class Persona {
     	this.apellidos = apellidos;
     	this.claves = claves;
     }
-    public Persona(){
+    public Persona(){ // Constructor 
 
     }
+      
     public void setNombre(String nombres) {
     	this.nombres= nombres;
     	
@@ -39,6 +37,11 @@ public class Persona {
     }
     public String getClaves() {
     	return claves;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", claves=" + claves + '}'+" \n";
     }
     
 

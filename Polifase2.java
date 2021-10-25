@@ -15,6 +15,11 @@ public class Polifase2 {
 	
 	MergeSort merg = new MergeSort();
 	
+	Persona vacio = new Persona();
+	
+	ArrayList<Persona> pAux = new ArrayList<>();
+	ArrayList<Persona> p = new ArrayList<>();
+	
     ArrayList<Persona> bloque1 = new ArrayList<>();
     ArrayList<Persona> bloque2 = new ArrayList<>();
     ArrayList<Persona> bloque3 = new ArrayList<>();
@@ -30,9 +35,16 @@ public class Polifase2 {
     ArrayList<Persona> bloque2aux = new ArrayList<>();
     ArrayList<Persona> bloque3aux = new ArrayList<>();
     ArrayList<Persona> bloque4aux= new ArrayList<>();
+    
+    ArrayList<Persona> bloque5aux = new ArrayList<>();
+    ArrayList<Persona> bloque6aux = new ArrayList<>();
+    ArrayList<Persona> bloque7aux = new ArrayList<>();
+    ArrayList<Persona> bloque8aux= new ArrayList<>();
 
     
     ArrayList<ArrayList<Persona>> aux = new ArrayList<>(Arrays.asList(bloque1aux ,bloque2aux ,bloque3aux ,bloque4aux));
+    ArrayList<ArrayList<Persona>> aux1 = new ArrayList<>(Arrays.asList(bloque5aux ,bloque6aux ,bloque7aux ,bloque8aux));
+    
     ArrayList< ArrayList<Persona>> personas0Bloques = new ArrayList< ArrayList<Persona>>();
     ArrayList< ArrayList<Persona>> personas1Bloques = new ArrayList< ArrayList<Persona>>();
     ArrayList< ArrayList<Persona>> personas2Bloques = new ArrayList< ArrayList<Persona>>();
@@ -43,11 +55,14 @@ public class Polifase2 {
     ArrayList< ArrayList<Persona>> BloquesTot2 = new ArrayList< ArrayList<Persona>>(Arrays.asList(bloque6,bloque7,bloque8,bloque9,bloque10)); 
     
 	public void polifase2(ArrayList<Persona> personas) {
-		
+		p.add(vacio);
+		p.add(vacio);
 		int nF1 =0, nF2 =0, j = 0;
 		int numClaves=2;
 		
-		int[] bloque1, bloque2;
+		int[] bloque1;
+		
+	
 		
 		personas =  archivos.LecturaArch("FO.txt");
 		
@@ -55,6 +70,8 @@ public class Polifase2 {
 		archivos.createArch("Archivo2.txt");
 		archivos.createArch("Archivo3.txt");
 		archivos.createArch("Archivo0.txt");
+		
+		archivos.createArch("ArchivoFinal.txt");
 		imprimePersona.imprimirNom(personas);
 		//Divide la lista original en 2 
 		while(personas.size()>0) {
@@ -69,20 +86,26 @@ public class Polifase2 {
 			}
 		}
 		
-
 		
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///i
 		//---------------------------------
 		
 		bloque1 =bloquesCont(personas0Bloques); 
-		lecturaEscritura(personas0Bloques,personas,bloque1,aux,"Archivo0.txt");
+		pAux=lecturaEscritura(personas0Bloques,personas,bloque1,aux,"Archivo0.txt");
+		archivos.borrarContenido(pAux,"Archivo0.txt");
+		
+	
+		bloque1 =bloquesCont(personas1Bloques); 
+		pAux=lecturaEscritura(personas1Bloques,personas,bloque1,aux1,"Archivo1.txt");
+		archivos.borrarContenido(pAux,"Archivo1.txt");
+		
+		
+		
 		//---------------------------------
 		
-		
-		archivos.EscribirArch2(personas1Bloques,"Archivo1.txt");
-				
 		DividirPersonasx(personas0Bloques,personas1Bloques,personas2Bloques , personas3Bloques );
-
+	
+		
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 		
 		while(personas3Bloques.get(0).size()!=9) {
@@ -93,11 +116,27 @@ public class Polifase2 {
 			imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
 		}
 		imprimeBloquesA(personas0Bloques,personas1Bloques,personas2Bloques,personas3Bloques); ///ia
-
+		int i = 0;
+		while(i<personas3Bloques.size()) {
+			archivos.EscribirArch(personas3Bloques.get(i),"ArchivoFinal.txt");
+		   
+		    i = i+1;
+			}
 		
 		System.out.println(" personas3Bloques :");
 		imprimePersona.imprimirNom(personas3Bloques.get(0));
 		System.out.println("Size: "+personas3Bloques.get(0).size());
+	}
+	public void dos(ArrayList<ArrayList<Persona>> personasxBloques, String Archx,int[] bloque1,ArrayList<Persona> personas,ArrayList<ArrayList<Persona>> personasyBloques, String Archy,int[] bloque2,ArrayList<ArrayList<Persona>> aux,ArrayList<ArrayList<Persona>> aux1) {
+		
+		bloque1 =bloquesCont(personasxBloques); 
+		pAux=lecturaEscritura(personasxBloques,personas,bloque1,aux,"Archivo0.txt");
+		archivos.borrarContenido(pAux,"Archivo0.txt");
+		
+		bloque2 =bloquesCont(personasyBloques); 
+		pAux=lecturaEscritura(personasyBloques,personas,bloque2,aux1,"Archivo1.txt");
+		archivos.borrarContenido(pAux,"Archivo1.txt");
+		
 	}
 	
 	
@@ -113,27 +152,32 @@ public class Polifase2 {
 		
 	}
 	
-	public void lecturaEscritura(ArrayList<ArrayList<Persona>> personasxBloques,ArrayList<Persona> personas,int[] bloque1, ArrayList<ArrayList<Persona>> aux, String nameAchi) {
+	public ArrayList<Persona>  lecturaEscritura(ArrayList<ArrayList<Persona>> personasxBloques,ArrayList<Persona> personas,int[] bloque1, ArrayList<ArrayList<Persona>> auxi, String nameAchi) {
 		ManejoArch archivos = new ManejoArch(); 
+		ArrayList<Persona> paux = new ArrayList<>();
 		personas.clear();
 		bloque1 =bloquesCont(personasxBloques); // cuenta los bloques
-		archivos.EscribirArch2(personasxBloques,"Archivo0.txt"); //escribe en arch
+		archivos.EscribirArch2(personasxBloques,nameAchi); //escribe en arch
 		personasxBloques.clear();//borraaaando
 		personas =  archivos.LecturaArch(nameAchi); //lee
-		reparte(personasxBloques,personas,bloque1,aux); // los vuelve a poner en la lista
+		paux=reparte(personasxBloques,personas,bloque1,auxi); // los vuelve a poner en la list
 		
+		
+		return paux;
 	}
 
-	public void reparte(ArrayList<ArrayList<Persona>> personasxBloques, ArrayList<Persona> personas,int[] bloque1, ArrayList<ArrayList<Persona>> aux) {
+	public ArrayList<Persona>  reparte(ArrayList<ArrayList<Persona>> personasxBloques, ArrayList<Persona> personas,int[] bloquex, ArrayList<ArrayList<Persona>> aux) {
 		LlenarArchivos llenar = new LlenarArchivos();
-		for (int var = 0; var< 3; var++ )  {
-			for (int i = 0; i< bloque1[var]; i++ ) {
+		ArrayList<Persona> pAux = new ArrayList<>(personas);
+		for (int var = 0; var<bloquex.length; var++ )  {
+			for (int i = 0; i< bloquex[var]; i++ ) {
 					llenar.LlenarF1(personas,aux.get(var)); 
 				}
 			personasxBloques.add(aux.get(var));
 			
 			}
 		
+		return pAux;
 		
 	}
 	
