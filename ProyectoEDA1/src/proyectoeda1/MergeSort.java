@@ -1,7 +1,9 @@
 
 package proyectoeda1;
 import java.util.ArrayList;
-
+/* El algoritmo de ordenamiento interno merge sort esta basado en el paradigma divide y venceras, este divide la lista en dos sublistas y repite la particion hasta que los 
+elementos quedan individualmente, una vez que se ha hecho esto ordena y junta de la mismo forma que los separo, hasta llegar a la lista original pero ordenada, en esta ocasion 
+el algoritmo es capaz de trabajar con objetos especificamente con carcateres.*/
 public class MergeSort {
     ImprimirPersona imprimePersona = new ImprimirPersona();
     
