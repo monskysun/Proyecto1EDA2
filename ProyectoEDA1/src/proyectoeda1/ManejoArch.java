@@ -26,7 +26,7 @@ public class ManejoArch {
                     e.printStackTrace();
                 }
     }
-    public void EscribirArch() {
+   /* public void EscribirArch() {
             try {
                   FileWriter myWriter = new FileWriter("/Users/monserratlopez/eclipse-workspace/EDA2/Archivo2.txt");
                   myWriter.write("Exito");
@@ -38,7 +38,25 @@ public class ManejoArch {
                   System.out.println("Algo salió mal en la escritura de tu archivo.");
                   e.printStackTrace();
                 }
-      }
+      }*/
+    public void EscribirArch2(ArrayList<ArrayList<Persona>> personas0Bloques,String nameArch) {
+        try { 
+            FileWriter myWriter = new FileWriter(nameArch);
+            for(int i = 0; i<personas0Bloques.size(); i++) {
+    			for(int k = 0; k<personas0Bloques.get(i).size();k++) {
+    				myWriter.write(personas0Bloques.get(i).get(k).getApellidos()+",");
+    				myWriter.write(personas0Bloques.get(i).get(k).getNombre()+",");
+    	            myWriter.write(personas0Bloques.get(i).get(k).getClaves()+",,"+"\n");
+
+    	    	}
+    		}
+            myWriter.close();
+            //System.out.println("YA QUEDÓ");
+        }catch (IOException e){
+            System.out.println("Algo salió mal en la escritura de tu archivo.");
+            e.printStackTrace();
+        }
+    }
 
     public void EscribirArch(ArrayList<Persona> personas,String nameArch) {
 		try { 
