@@ -8,6 +8,8 @@ public class RadixExterno {
    
     ArrayList<Persona> persLect = new ArrayList<>();
     ManejoArch mane = new ManejoArch();
+   /*Para el algoritmode radix es necesario el uso de archivos por digito, considerando que el rango de valores para las claves es de [0-9] , tendremos un archivo extra para 
+   poder almacenara la lista despues de las iteraciones sin necesidad de modificar el archivo base*/
     File archivo0= new File("Cola0.txt");
     File archivo1 = new File("Cola1.txt");
     File archivo2= new File("Cola2.txt");
@@ -22,6 +24,8 @@ public class RadixExterno {
     
     
     public void radixExtrn(ArrayList<Persona> list){//list es de personas
+       /* El metodo num 1 recibe como parametro la lista completa ya que necesita recorrer la lista orginial, para num2 en adelante se le pasa el archivo final que es donde 
+       se ha hido guardando la lista despues de la iteración*/
         int n=list.size();
         num1(n,list);
         num2(n,mane.LecturaArch("Final.txt"));
@@ -34,17 +38,20 @@ public class RadixExterno {
     }
     
     public void num1(int n,ArrayList<Persona> list){
+       /* La primera funcion trabajara con el digito menos significativo de todas las clases almacenara la clave del objeto en la variable aux y entrara en un ciclo for en el 
+       cual se sacara el modulo 10 de la clave y se ejecutara el metodo ingresar, el cual recibe como parametros todos los archivos, la variable, la lista y la clave*/
         int aux;
         for(int i=0;i<n;i++){ //Unidades
             int var = Integer.parseInt(list.get(i).getClaves());   
             aux=var%10;
-            ingresar1(aux,i,list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0);
+            ingresar1(aux,i,list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0); //ingresa a la cola 
             
         }
-        extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11);
+        extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11); // concatena las claves en los archivos
 
     }
     public void num2(int n,ArrayList<Persona> list){
+       /* Sigue le mismo procedimiento de num1, pero el modulo ahora es de 100 para poder trabajar con las decenas */
         int aux;
         for(int i=0;i<n;i++){ //Decenas
             int var = Integer.parseInt(list.get(i).getClaves()); 
@@ -53,7 +60,7 @@ public class RadixExterno {
         }
         extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11);
     }
-    public void num3(int n,ArrayList<Persona> list){
+    public void num3(int n,ArrayList<Persona> list){ /* Trabaja con las centenas y las instrucciones fueron explicadas en num1*/
         int aux;
         for(int i=0;i<n;i++){ //Centenas
             int var = Integer.parseInt(list.get(i).getClaves());    
@@ -62,7 +69,7 @@ public class RadixExterno {
         }
         extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11);
     }
-    public void num4(int n,ArrayList<Persona> list){
+    public void num4(int n,ArrayList<Persona> list){ /*Trabaja con los millares y las instrucciones fueron explicadas en num1*/
         int aux;
         for(int i=0;i<n;i++){ //Millares
             int var = Integer.parseInt(list.get(i).getClaves());   
@@ -71,7 +78,7 @@ public class RadixExterno {
         }
         extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11);
     }
-    public void num5(int n,ArrayList<Persona> list){
+    public void num5(int n,ArrayList<Persona> list){ /*Trabaja con las decenas de millar y las instrucciones fueron explicadas en num1*/
         int aux;
         for(int i=0;i<n;i++){ //Decena de millar
             int var = Integer.parseInt(list.get(i).getClaves());  
@@ -80,7 +87,7 @@ public class RadixExterno {
         }
         extraer(list,archivo1,archivo2,archivo3,archivo4,archivo5,archivo6,archivo7,archivo8,archivo9,archivo0,archivo11);
     }
-    public void num6(int n,ArrayList<Persona> list){
+    public void num6(int n,ArrayList<Persona> list){ /*Trabaja con las centenas de millar y las instrucciones fueron explicadas en num1**/
         int aux;
         for(int i=0;i<n;i++){ //Centena de millar
             int var = Integer.parseInt(list.get(i).getClaves());   
@@ -91,7 +98,7 @@ public class RadixExterno {
     }
     
     public void ingresar1(int x, int  iter,ArrayList<Persona> list,File ar1,File ar2,File ar3,File ar4,File ar5,File ar6,File ar7,File ar8,File ar9,File ar0){
-        
+        /* La funcion ingresar permite alacenar en una cola el elemento evaluado en num##, para los casos fue necesario el uso de condiciones if*/
         if(x==0){
             mane.escribirArch(list.get(iter),ar0);
         }else if(x==1){
@@ -115,6 +122,7 @@ public class RadixExterno {
         }
     }
     public void ingresar2(int x, int  iter,ArrayList<Persona> list,File ar1,File ar2,File ar3,File ar4,File ar5,File ar6,File ar7,File ar8,File ar9,File ar0){
+       /*Ingresar dos trabaja igual al metodo anterior pero ahora con decenas*/
         if(x>=0 && x<=9){
             mane.escribirArch(list.get(iter),ar0);
         }else if(x>=10 && x<=19){
@@ -233,6 +241,8 @@ public class RadixExterno {
     
       
     public void extraer(ArrayList<Persona> list,File ar1,File ar2,File ar3,File ar4,File ar5,File ar6,File ar7,File ar8,File ar9,File ar0,File archFinal){
+       /* Para el metodo extraee fue necesario conocer el tamaño del archivo en el que ya se han almacenado las claves, recorre estos archivos en orden y concatena las 
+       claves en el archivo final*/
         long tamAr1=ManejoArch.tamanioArchivo(ar1);
         long tamAr2=ManejoArch.tamanioArchivo(ar2);
         long tamAr3=ManejoArch.tamanioArchivo(ar3);
@@ -252,8 +262,8 @@ public class RadixExterno {
                 inic+=1;
                 tamAr0-=1;
                 if(tamAr0==0){
-                    ManejoArch.borrar("Cola0.txt");
-                    persLect.clear();
+                    ManejoArch.borrar("Cola0.txt"); // borra el archivo 
+                    persLect.clear(); // borra el contenido de la cola
                     inic=0;
                 }
             }else if(tamAr1>0 ){
