@@ -207,21 +207,21 @@ public class Polifase2 {
 	// La sigueinte funcion imprime los bloques de la lista
 	public void imprimeBloquesA(ArrayList<ArrayList<Persona>> personas0Bloques ,ArrayList<ArrayList<Persona>> personas1Bloques,ArrayList<ArrayList<Persona>> personas2Bloques,ArrayList<ArrayList<Persona>> personas3Bloques) {
 	
-		System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" );
+		System.out.println("------------------------------------" );
 		System.out.println("Vista bloques: " );
 		System.out.println("Personas 0 : "+ personas0Bloques );
 		System.out.println("Personas 1 : "+ personas1Bloques );
 		System.out.println("Personas 2 : "+ personas2Bloques );
 		System.out.println("Personas 3 : "+ personas3Bloques );
 		
-		System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB/" );
+		System.out.println("------------------------------------/" );
 
 	}
 	
 	// La sigueinte funcion sirve  para imprimir un elemento de una lista de listas de personas.
 	public void imprimeLdeBloquesB(ArrayList<ArrayList<Persona>> personas0Bloques ,ArrayList<ArrayList<Persona>> personas1Bloques,ArrayList<ArrayList<Persona>> personas2Bloques,ArrayList<ArrayList<Persona>> personas3Bloques) {
 		
-		System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP" );
+		System.out.println("------------------------------------" );
 		System.out.println("Vista personas: " );
 		System.out.println("Personas0: ");
 		imprimeItera(personas0Bloques);
@@ -231,7 +231,7 @@ public class Polifase2 {
 		imprimeItera(personas2Bloques);
 		System.out.println("Personas3: ");
 		imprimeItera(personas3Bloques);
-		System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP/" );
+		System.out.println("------------------------------------/" );
 
 	}
 	// La sigueinte funcion sirve de complemento para imprimir un elemento de una lista de listas de personas.

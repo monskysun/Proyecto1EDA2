@@ -51,8 +51,8 @@ public class ManejoArch {
             FileWriter myWriter = new FileWriter(nameArch);
             for(int i = 0; i<personas0Bloques.size(); i++) {
     			for(int k = 0; k<personas0Bloques.get(i).size();k++) {
-    				myWriter.write(personas0Bloques.get(i).get(k).getNombre()+",");
     				myWriter.write(personas0Bloques.get(i).get(k).getApellidos()+",");
+    				myWriter.write(personas0Bloques.get(i).get(k).getNombre()+",");
     	            myWriter.write(personas0Bloques.get(i).get(k).getClaves()+",,"+"\n");
 
     	    	}
@@ -111,7 +111,7 @@ public class ManejoArch {
                   i = i + 1;
                   }
                   myWriter.close();
-                  System.out.println("YA QUEDÓ");
+                 
 
                 } 
                     catch (IOException e) 

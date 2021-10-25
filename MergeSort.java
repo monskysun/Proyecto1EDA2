@@ -12,6 +12,7 @@ public class MergeSort {
     	
     	(personas3=  new ArrayList<>(personas1)).addAll(personas2);
         System.out.println("\n--------------------------------------");
+        System.out.println("RESULTADO MERGE:");
         mergeSort(personas3,0, personas3.size()-1);
         imprimePersona.imprimirNom(personas3);
  
