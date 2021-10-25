@@ -19,22 +19,25 @@ public class MezclaEquilibrada {
     ArrayList<Persona> pers1 = new ArrayList<>(); // la lista de lista (lista secundaria)
     ArrayList<Persona> pers2 = new ArrayList<>();
     ArrayList<Persona> pers3 = new ArrayList<>();
-    
-    public void mezclEqui(ArrayList<Persona> personas) { // metodo que manda llamar todos los metodos abajo descritos, por el momento solo realiza dos iteraciones.
+	
+    public void mezclEqui(ArrayList<Persona> personas) { // metodo que manda llamar todos los metodos abajo descritos, por el momento solo realiza dos iteraciones
+        int  i=0;
 	mane.EscribirArch(personas,"f0.txt");
         
-        dividir(personas,archivo1,archivo2); //inicio de oteración 1 
+        dividir(personas,archivo1,archivo2);
         dividirPersonasx(personas1,personas2,personas3);
         
         imprimePersona.imprimirListList(personas3);
+        
         pers3=mane.LecturaArch("f0.txt");
-        
-        dividir(pers3,archivo1,archivo2); // inicio de iteración 2
-        
-        dividirPersonasx(personas1,personas2,personas3);
+        while(i<pers3.size()){
+            dividir(pers3,archivo1,archivo2);
+            dividirPersonasx(personas1,personas2,personas3);
+            i+=1;
+        }
         imprimePersona.imprimirListList(personas3);
-        
     }
+    
     
     public void dividir(ArrayList<Persona> list, File archF1, File archF2){
 	/* Realiza el encapsualamiento de los bloques ordenados e intercala entre un archivo y otro */
